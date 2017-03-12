@@ -143,7 +143,7 @@ class TodoAdder extends React.Component {
     }
 }
 
-class TodoComponent extends React.Component {
+class TodoApp extends React.Component {
     constructor(props) {
         super(props);
         this.handle_addTodo = this.handle_addTodo.bind(this);
@@ -178,7 +178,7 @@ const reactContainer = document.getElementById('react-container');
 
 const renderView =  _store => {
     reactDom.render(
-        <TodoComponent
+        <TodoApp
             store={_store.getState()}
             action_addTodo={_store.action_addTodo}
             action_deleteTodo={_store.action_deleteTodo}
