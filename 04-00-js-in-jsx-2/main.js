@@ -6,12 +6,7 @@ class Root extends React.Component {
        super(props);
     }
 
-    componentDidMount() {
-        console.log(Date.now(), 'componentDidMount: ');
-    }
-
     render() {
-        console.log(Date.now(), 'render: ');
         return (
             <div>
                 {

@@ -12,18 +12,18 @@ const Item = function(props) {
 
 class Root extends React.Component {
     constructor(props) {
-       super(props);
-       this.model = [1,2,3,4];
-    }
+        super(props);
 
-    componentDidMount() {
+        this.state = {
+            model: [1,2,3,4]
+        }
     }
 
     render() {
         return (
             <div>
                 {
-                    this.model.map( function generateItem(item, index){
+                    this.state.model.map( function generateItem(item, index){
                         return(
                             <Item key={index} item={item} />
                         );

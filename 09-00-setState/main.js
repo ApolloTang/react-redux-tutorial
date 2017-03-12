@@ -16,21 +16,27 @@ class Root extends React.Component {
         super(props);
         this.handle_addModelItem = this.handle_addModelItem.bind(this);
 
-        this._model = [];
-
         this.state = {
-            timeStamp: Date.now()
-        };
-    }
-
-    componentDidMount() {
+            model: []
+        }
     }
 
     handle_addModelItem() {
-        const _id = Date.now();
-        this._model.push({id:_id, value:_id+''});
+        const _id = Date.now().toString();
 
-        this.setState({timeStamp:_id});
+        const model_prev = this.state.model;
+        const newItem = {
+            id: _id,
+            value: _id
+        };
+        const model_next = [].concat(model_prev, newItem);
+
+        console.log('handle_addModelItem model_prev:', JSON.stringify(model_prev, null, 4));
+        console.log('handle_addModelItem model_next:', JSON.stringify(model_next, null, 4));
+
+        console.log('previous model !== next model: ', model_prev === model_next );
+
+        this.setState({model: model_next});
     }
 
     render() {
@@ -38,7 +44,7 @@ class Root extends React.Component {
             <div>
                 <button onClick={this.handle_addModelItem}>Add model </button>
                 {
-                    this._model.map( function generateItem(item, index){
+                    this.state.model.map( function generateItem(item, index){
                         return(
                             <Item key={index} id={item.id} value={item.value} />
                         );

@@ -14,22 +14,22 @@ const Item = function(props) {
 class Root extends React.Component {
     constructor(props) {
         super(props);
-        this._model = [
-            {id:1, value:'1'},
-            {id:2, value:'2'},
-            {id:3, value:'3'},
-            {id:4, value:'4'}
-        ];
-    }
 
-    componentDidMount() {
+        this.state = {
+            model: [
+                {id:1, value:'1'},
+                {id:2, value:'2'},
+                {id:3, value:'3'},
+                {id:4, value:'4'}
+            ]
+        }
     }
 
     render() {
         return (
             <div>
                 {
-                    this._model.map( function generateItem(item, index){
+                    this.state.model.map( function generateItem(item, index){
                         return(
                             <Item key={index} id={item.id} value={item.value} />
                         );

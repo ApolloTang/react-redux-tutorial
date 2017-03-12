@@ -8,7 +8,7 @@ const Item = function(props) {
         <div>
             <span>
                 <span> {props.value} </span>
-                <span onClick={ ()=>props.handle_deleteModelItem(props.id) }> [ delete ] </span>
+                <button onClick={ ()=>props.handle_deleteModelItem(props.id) }> delete </button>
             </span>
         </div>
     );
@@ -21,34 +21,47 @@ class Root extends React.Component {
         this.handle_addModelItem = this.handle_addModelItem.bind(this);
         this.handle_deleteModelItem = this.handle_deleteModelItem.bind(this);
 
-        this._model = [];
-
         this.state = {
-            timeStamp: Date.now()
-        };
+            model: []
+        }
     }
 
-    handle_addModelItem() {
-        const _id = Date.now();
-        this._model.push({id:_id, value:_id+''});
+     handle_addModelItem() {
+        const _id = Date.now().toString();
 
-        this.setState({timeStamp:_id});
+        const model_prev = this.state.model;
+        const newItem = {
+            id: _id,
+            value: _id
+        };
+        const model_next = [].concat(model_prev, newItem);
+
+        console.log('handle_addModelItem model_prev:', JSON.stringify(model_prev, null, 4));
+        console.log('handle_addModelItem model_next:', JSON.stringify(model_next, null, 4));
+
+        console.log('previous model !== next model: ', model_prev === model_next );
+
+        this.setState({model: model_next});
     }
 
     handle_deleteModelItem(id) {
-        _.remove(this._model, item=>{
-            return id === item.id;
-        });
+        const model_prev = this.state.model;
+        const model_next = model_prev.filter( item => (id !== item.id) )
 
-        this.setState({timeStamp:Date.now()});
+        console.log('handle_deleteModelItem model_prev:', JSON.stringify(model_prev, null, 4));
+        console.log('handle_deleteModelItem model_next:', JSON.stringify(model_next, null, 4));
+
+        console.log('previous model !== next model: ', model_prev === model_next );
+
+        this.setState({model: model_next});
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.handle_addModelItem}>Add model </button>
+                <button onClick={this.handle_addModelItem}>Add item</button>
                 {
-                    this._model.map( (item, index) => {
+                    this.state.model.map( (item, index) => {
                         return(
                             <Item
                                 key={index}
