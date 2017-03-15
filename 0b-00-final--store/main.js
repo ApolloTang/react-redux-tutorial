@@ -4,10 +4,11 @@ import _ from 'lodash';
 
 class Store {
     constructor() {
-        this.subscribe = this.subscribe.bind(this);
-        this.action_addTodo = this.action_addTodo.bind(this);
-        this.action_deleteTodo = this.action_deleteTodo.bind(this);
-        this.action_toggleTodo = this.action_toggleTodo.bind(this);
+        this.action_addTodo=this.action_addTodo.bind(this);
+        this.action_deleteTodo=this.action_deleteTodo.bind(this);
+        this.action_toggleTodo=this.action_toggleTodo.bind(this);
+        this.subscribe=this.subscribe.bind(this);
+        this.getState=this.getState.bind(this);
 
         this.storeState = {
             todos:[]
@@ -21,7 +22,10 @@ class Store {
         console.log('storeState: ', this.storeState)
         this._listeners.forEach( listener=>{ listener(); } );
     }
-    // public method //
+
+    ////////////////////
+    // public methods //
+    ////////////////////
     action_addTodo(_text) {
         const _id = Date.now().toString();
 
@@ -72,7 +76,6 @@ class Store {
         return this.storeState;
     }
 };
-
 
 const TodoItem = function(props) {
     const textStyle = {
@@ -143,28 +146,43 @@ class TodoAdder extends React.Component {
     }
 }
 
+
 class TodoApp extends React.Component {
     constructor(props) {
         super(props);
         this.handle_addTodo = this.handle_addTodo.bind(this);
         this.handle_deleteTodo = this.handle_deleteTodo.bind(this);
         this.handle_toggleTodo = this.handle_toggleTodo.bind(this);
+        this._onChange = this._onChange.bind(this);
+
+        this.state = {
+            todos:[]
+        };
     }
-    handle_addTodo(text) {
-        this.props.action_addTodo(text);
+    componentDidMount() {
+        this._removeStoreSubscription = this.props.store.subscribe(this._onChange);
     }
-    handle_deleteTodo(id) {
-        this.props.action_deleteTodo(id);
+    componentWillUnmount() {
+        this._removeStoreSubscription();
     }
-    handle_toggleTodo(id) {
-        this.props.action_toggleTodo(id);
+    _onChange() {
+        this.setState(store.getState());
+    }
+    handle_addTodo(_text) {
+       this.props.store.action_addTodo(_text);
+    }
+    handle_deleteTodo(_id) {
+        this.props.store.action_deleteTodo(_id);
+    }
+    handle_toggleTodo(_id) {
+        this.props.store.action_toggleTodo(_id);
     }
     render() {
         return (
             <div>
                 <TodoAdder addTodo={this.handle_addTodo}/>
                 <TodoCollection
-                    todos={this.props.store.todos}
+                    todos={this.state.todos}
                     deleteTodo={this.handle_deleteTodo}
                     toggleTodo={this.handle_toggleTodo}
                 />
@@ -173,33 +191,8 @@ class TodoApp extends React.Component {
     }
 }
 
-
-const reactContainer = document.getElementById('react-container');
-
-const renderView =  _store => {
-    reactDom.render(
-        <TodoApp
-            store={_store.getState()}
-            action_addTodo={_store.action_addTodo}
-            action_deleteTodo={_store.action_deleteTodo}
-            action_toggleTodo={_store.action_toggleTodo}
-        />,
-        reactContainer
-    );
-};
-
-
-const connectStore = function(_store) {
-    return function() {
-        renderView( _store );
-    };
-}
-
 const store = new Store;
-window.s = store;
+const reactContainer = document.getElementById('react-container');
+reactDom.render(<TodoApp store={store}/>, reactContainer);
 
-const updateApp = connectStore(store);
-
-updateApp();
-const removeSubscription = store.subscribe( updateApp );
 
