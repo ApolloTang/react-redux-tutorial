@@ -3,9 +3,6 @@ import reactDOM from 'react-dom';
 
 
 class MyComponent extends React.Component {
-    constructor() {
-       super();
-    }
 
     render() {
         return (
@@ -20,6 +17,7 @@ class MyComponent extends React.Component {
             </div>
         );
     }
+
 }
 
 const reactContainer = document.getElementById('react-container');

@@ -3,10 +3,6 @@ import reactDOM from 'react-dom';
 
 
 class MyComponent extends React.Component {
-    constructor() {
-       super();
-    }
-
     render() {
         return (
             <div> {/* A component must have one and only one root node (not more) */}
