@@ -5,9 +5,6 @@ import _ from 'lodash';
 class Store {
     constructor() {
         this.dispatch=this.dispatch.bind(this);
-        // this.action_addTodo=this.action_addTodo.bind(this);
-        // this.action_deleteTodo=this.action_deleteTodo.bind(this);
-        // this.action_toggleTodo=this.action_toggleTodo.bind(this);
         this.subscribe=this.subscribe.bind(this);
         this.getState=this.getState.bind(this);
 
@@ -83,47 +80,6 @@ class Store {
             }
         }
     }
-
-    // action_addTodo(_text) {
-    //     const _id = Date.now().toString();
-    //
-    //     const _todos_prev = this.storeState.todos;
-    //     const _todo_new = { id: _id, text: _text, isDone: false };
-    //
-    //     const _todos_next = [
-    //         ..._todos_prev,
-    //         _todo_new
-    //     ];
-    //
-    //     this.storeState.todos = _todos_next;
-    //     this._storeChange('action_addTodo');
-    // }
-
-    // action_deleteTodo(_id) {
-    //     const _todos_prev = this.storeState.todos;
-    //     const _todos_next = _todos_prev.filter( item=>_id !== item.id );
-    //
-    //     this.storeState.todos = _todos_next;
-    //     this._storeChange('action_deleteTodo');
-    // }
-
-    // action_toggleTodo(_id) {
-    //     const _todos_prev = this.storeState.todos;
-    //     const _todos_next = _todos_prev.map( todo_prev=>{
-    //         let todo_next;
-    //         if ( _id === todo_prev.id ) {
-    //             todo_next = {
-    //                 ...todo_prev,
-    //                 isDone: !todo_prev.isDone
-    //             }
-    //         } else {
-    //             todo_next = todo_prev;
-    //         }
-    //         return todo_next
-    //     });
-    //     this.storeState.todos = _todos_next;
-    //     this._storeChange('action_toggleTodo');
-    // }
 
     subscribe(_listerner_new){
         const that = this;
