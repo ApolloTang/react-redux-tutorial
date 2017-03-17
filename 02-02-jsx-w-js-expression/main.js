@@ -4,21 +4,19 @@ import reactDOM from 'react-dom';
 
 class MyComponent extends React.Component {
 
-    // JXS Array item must have key attributes
+    // JXS is can have js expression
 
     render() {
         return (
-           <div>
-                {[
-                    <div key={1} >1</div>,
-                    <div key={2} >2</div>,
-                    <div key={3} >3</div>,
-                    React.createElement('div', {key:4}, '4')
-                ]}
+            <div>
+                { /* This is a comment */ }
+                { true ? <b>true</b> : null }
+                { false ? null : <div>false</div> }
+                <br />
+                { `1 + 1 = ${1+1} ` }
             </div>
         );
     }
-
 }
 
 const reactContainer = document.getElementById('react-container');
