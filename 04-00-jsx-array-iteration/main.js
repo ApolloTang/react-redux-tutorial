@@ -4,7 +4,7 @@ import reactDOM from 'react-dom';
 
 class MyComponent extends React.Component {
 
-    // With array mapping
+    // With array iteration
 
     render() {
         return (

@@ -4,7 +4,7 @@ import reactDOM from 'react-dom';
 
 class MyComponent extends React.Component {
 
-    // JXS Array item must have key attributes
+    // JXS's array item must have key attribute with unique value
 
     render() {
         return (

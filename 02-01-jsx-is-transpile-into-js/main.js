@@ -9,10 +9,11 @@ class MyComponent extends React.Component {
     render() {
         return React.createElement(
             "div", null,
-            React.createElement( "div", null, "1"),
-            React.createElement( "div", null, "2"),
-            React.createElement( "div", null, "3"),
-            React.createElement( "div", null, "4"));
+            React.createElement( "div", null, "1" ),
+            React.createElement( "div", null, "2" ),
+            React.createElement( "div", null, "3" ),
+            React.createElement( "div", null, "4" )
+        );
     }
 }
 

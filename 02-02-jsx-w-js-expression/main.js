@@ -4,7 +4,7 @@ import reactDOM from 'react-dom';
 
 class MyComponent extends React.Component {
 
-    // JXS is can have js expression
+    // JXS can contain js expression
 
     render() {
         return (
