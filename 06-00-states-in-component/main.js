@@ -72,25 +72,25 @@ reactDOM.render(<MyComponent data={['1','2','3','4']} />, reactContainer);;
 {/* -----------------------------------------------------------------------------
 
     [1] React Class in ES6 syntex 'this' is lexical
-        scope in non their life cycle method,
-        you have to manually bind 'this' to them
+        scope in non life cycle method, you have to manually
+        bind 'this' to each one of them them.
 
     [2] Component internal state:
         • *NeverEver* set 'this.state' directly.
         • You can only change 'this.state' via 'this.setState()'
-        • Calling 'this.setState()' will trigger rendering()
+        • Calling 'this.setState()' will trigger render()
 
     [3] Component custom cache:
-        change in this cahche will not trigger render()
+        • change in this cache will not trigger render()
 
-    [4] *NeverEver* mutate props pass into the component.
-        If you need to do opperation on props, make a copy and
-        perform you opperation on the copy.
+    [4] *NeverEver* mutate props passed into the component.
+        If you need to do opperation on values in props, you must
+        make a copy and perform you opperation on the copy.
 
-    [5] Make it a habbit to always clone previous state
+    [5] Make it a habbit to always clone previous state.
 
     [6] ES6 way of shallow copying array (spread operator).
 
-    [7] Calling 'this.setState()' to trigger redering().
+    [7] Calling 'this.setState()' to trigger reder().
 
 */}
