@@ -13,8 +13,7 @@ class App extends React.Component {
 
     handle_addItem() {
         const list_prev = this.state.list;
-        const list_prev_clone = [ ...list_prev ];
-        const list_next = list_prev_clone;
+        const list_next = list_prev;
 
         const item_next = Date.now()+'';
 
