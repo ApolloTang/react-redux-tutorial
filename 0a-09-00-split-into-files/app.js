@@ -5,33 +5,25 @@ import List from './list';
 class App extends React.Component {
     constructor(props) {
         super();
-
         this.handle_addItem = this.handle_addItem.bind(this);
-
         this.state = {
             list: []
         };
+    }
 
-        this._cache = {};
-    }
-    componentDidMount() {
-        const data_clone = [].concat(this.props.data);
-        this._cache.data = data_clone;
-    }
     handle_addItem() {
         const list_prev = this.state.list;
         const list_prev_clone = [ ...list_prev ];
         const list_next = list_prev_clone;
 
-        const item_next = this._cache.data.shift();
+        const item_next = Date.now()+'';
 
-        if ( item_next ) {
-            list_next.push(item_next);
-            this.setState({
-                list: list_next
-            })
-        }
+        list_next.push(item_next);
+        this.setState({
+            list: list_next
+        });
     }
+
     render() {
         return (
             <div>
@@ -40,9 +32,6 @@ class App extends React.Component {
             </div>
         );
     }
-};
-App.propTypes = {
-    data: React.PropTypes.array
 };
 
 

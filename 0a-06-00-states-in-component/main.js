@@ -26,28 +26,19 @@ class MyComponent extends React.Component {
         this.state = {                                         // [2]
             list: []
         };
-
-        this._cache = {};                                      // [3]
-    }
-
-    componentDidMount() {
-        const data_clone = [].concat(this.props.data);         // [4]
-        this._cache.data = data_clone;
     }
 
     handle_addItem() {
         const list_prev = this.state.list;
-        const list_prev_clone = [ ...list_prev ];              // [5][6]
-        const list_next = list_prev_clone;
+        const list_next = list_prev;
 
-        const item_next = this._cache.data.shift();
+        const item_next = Date.now()+'';
 
-        if ( item_next ) {
-            list_next.push(item_next);
-            this.setState({                                     // [7]
-                list: list_next
-            })
-        }
+        list_next.push(item_next);
+
+        this.setState({                                        // [3]
+            list: list_next
+        });
     }
 
     render() {
@@ -66,31 +57,20 @@ class MyComponent extends React.Component {
 };
 
 const reactContainer = document.getElementById('react-container');
-reactDOM.render(<MyComponent data={['1','2','3','4']} />, reactContainer);;
+reactDOM.render(<MyComponent />, reactContainer);;
 
 
 {/* -----------------------------------------------------------------------------
 
-    [1] React Class in ES6 syntex 'this' is lexical
-        scope in non life cycle method, you have to manually
-        bind 'this' to each one of them them.
+    [1] In non life cycle method, 'this' in React Class ES6 syntex
+        is lexical scope, you have to manually bind 'this' to your
+        method.
 
-    [2] Component internal state:
+    [2] • 'this.state' is this component internal state.
         • *NeverEver* set 'this.state' directly.
-        • You can only change 'this.state' via 'this.setState()'
-        • Calling 'this.setState()' will trigger render()
+        • You can only change 'this.state' via 'this.setState()'.
+        • Calling 'this.setState()' will trigger render().
 
-    [3] Component custom cache:
-        • change in this cache will not trigger render()
-
-    [4] *NeverEver* mutate props passed into the component.
-        If you need to do opperation on values in props, you must
-        make a copy and perform you opperation on the copy.
-
-    [5] Make it a habbit to always clone previous state.
-
-    [6] ES6 way of shallow copying array (spread operator).
-
-    [7] Calling 'this.setState()' to trigger reder().
+    [3] Calling 'this.setState()' to trigger reder().
 
 */}
