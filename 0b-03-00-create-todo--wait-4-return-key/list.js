@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 const TodoItem = (props) => <div>{JSON.stringify(props.todoItem)}</div>;
 TodoItem.propTypes = {
-    item: React.PropTypes.string
+    todoItem: React.PropTypes.object
 }
 
 

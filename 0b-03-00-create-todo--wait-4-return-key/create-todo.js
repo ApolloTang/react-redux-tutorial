@@ -8,10 +8,15 @@ class CreateTodo extends React.Component {
         this.handle_keyUp = this.handle_keyUp.bind(this);
     }
     handle_inputChange(e) {
+        // Taken care of save to cached
+
         const inputText = e.target.value;
-        this._inputText = inputText;
+        this._inputText = inputText;            // this is thie cache
     }
     handle_keyUp(e) {
+        // Taking care of sending cached value when return is press
+        // then reset the cache to empthy string
+
         const RETURN = 13;
         const keyCode = e.keyCode;
         if (keyCode === RETURN) {

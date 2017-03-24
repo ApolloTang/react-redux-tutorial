@@ -15,7 +15,6 @@ class CreateTodo extends React.Component {
         return (
             <input type="text"
                 onChange={this.handle_inputChange}
-                onKeyUp={this.handle_keyUp}
             />
         );
     }
