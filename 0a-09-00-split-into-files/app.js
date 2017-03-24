@@ -18,6 +18,7 @@ class App extends React.Component {
         const item_next = Date.now()+'';
 
         list_next.push(item_next);
+
         this.setState({
             list: list_next
         });

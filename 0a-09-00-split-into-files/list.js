@@ -9,7 +9,10 @@ Item.propTypes = {
 
 
 const List = (props) => {
-    const list = (Object.prototype.toString.call(props.list) === '[object Array]' ) ? props.list : [];
+    const list
+        = (Object.prototype.toString.call(props.list) === '[object Array]' )
+        ? props.list : [];
+
     return (
         <div>
             { list.map( (item, index) => <Item key={index} item={item} />) }
