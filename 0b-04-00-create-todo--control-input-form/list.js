@@ -3,17 +3,9 @@ import reactDOM from 'react-dom';
 import _ from 'lodash';
 
 
-const TodoItem = (props) => {
-    const text = (props.todoItem.text) ? props.todoItem.text : '';
-
-    return(
-        <div>
-            <span>{text}</span>
-        </div>
-    );
-}
+const TodoItem = (props) => <div>{JSON.stringify(props.todoItem)}</div>;
 TodoItem.propTypes = {
-    todoItem: React.PropTypes.object
+    item: React.PropTypes.string
 }
 
 
