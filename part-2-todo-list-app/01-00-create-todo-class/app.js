@@ -21,7 +21,7 @@ class App extends React.Component {
         todoList_next.push(todoItem_next);
 
         this.setState({
-            list: todoList_next
+            todoList: todoList_next
         });
     }
 
