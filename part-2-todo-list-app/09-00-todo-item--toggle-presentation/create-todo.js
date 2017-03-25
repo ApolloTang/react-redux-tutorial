@@ -10,10 +10,12 @@ class CreateTodo extends React.Component {
             inputText: ''
         };
     }
+
     handle_inputChange(e) {
         const inputText = e.target.value;
         this.setState({ inputText });
     }
+
     handle_keyUp(e) {
         const RETURN = 13;
         const keyCode = e.keyCode;
@@ -22,6 +24,7 @@ class CreateTodo extends React.Component {
             this.setState({ inputText: ''});
         }
     }
+
     render() {
         return (
             <input type="text"

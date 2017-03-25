@@ -43,7 +43,9 @@ class App extends React.Component {
             return todoItem_next;
         });
 
-        this.setState( {todoList: todoList_next} );
+        this.setState({
+            todoList: todoList_next
+        });
     }
 
     render() {
