@@ -10,24 +10,27 @@ class CreateTodo extends React.Component {
             inputText: ''
         };
     }
+
     handle_inputChange(e) {
         const inputText = e.target.value;
-        this.setState({ inputText });
+        this.setState({ inputText });         // <--- [!]
     }
+
     handle_keyUp(e) {
         const RETURN = 13;
         const keyCode = e.keyCode;
         if (keyCode === RETURN) {
             this.props.createTodo(this.state.inputText);
-            this.setState({ inputText: ''});
+            this.setState({ inputText: ''});  // <--- [!]
         }
     }
+
     render() {
         return (
             <input type="text"
                 onChange={this.handle_inputChange}
                 onKeyUp={this.handle_keyUp}
-                value={this.state.inputText}
+                value={this.state.inputText}  /*  <-- [!] */
             />
         );
     }
