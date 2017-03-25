@@ -16,15 +16,15 @@ const TodoItem = (props) => {
         <div style={style_row} >
             <span
                 style={style_text}
-                onClick={()=>props.toggleTodo(props.todoItem.id)} > {/* <---[!] */}
-                {props.todoItem.text}
+                onClick={()=>props.toggleTodo(props.todoItem.id)}                  /* <--- [!] */
+                > {props.todoItem.text}
             </span>
         </div>
     );
 };
 TodoItem.propTypes = {
     todoItem: React.PropTypes.object,
-    toggleTodo: React.PropTypes.func // <--- [!]
+    toggleTodo: React.PropTypes.func                                              // <--- [!]
 }
 
 
