@@ -7,21 +7,16 @@ class CreateTodo extends React.Component {
         this.handle_inputChange = this.handle_inputChange.bind(this);
         this.handle_keyUp = this.handle_keyUp.bind(this);
     }
-    handle_inputChange(e) {
-        // Taken care of save to cached
-
+    handle_inputChange(e) {                     // <--- [1]
         const inputText = e.target.value;
-        this._inputText = inputText;            // cache current text in form
+        this._inputText = inputText;
     }
-    handle_keyUp(e) {
-        // Taking care of sending cached value when return is press
-        // then reset the cache to empthy string
-
+    handle_keyUp(e) {                           // <--- [2]
         const RETURN = 13;
         const keyCode = e.keyCode;
         if (keyCode === RETURN) {
             this.props.createTodo(this._inputText);
-            this._inputText = ''; // <--- clear cache but will not clear input box
+            this._inputText = '';               // <--- [3]
         }
     }
     render() {
@@ -39,3 +34,21 @@ CreateTodo.propTypes = {
 
 
 export default CreateTodo;
+
+
+{/*
+
+[1] handle_inputChange()
+
+    save form value to a cache
+
+[2] handle_keyup()
+
+    Wait for RETURN key press
+        1. Call createTodo() which save to the store
+        2. Empty the cache
+
+[3] Cache is clear but form is NOT cleared
+
+
+*/}
