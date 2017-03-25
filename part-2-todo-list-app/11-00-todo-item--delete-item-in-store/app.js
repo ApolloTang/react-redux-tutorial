@@ -9,7 +9,7 @@ class App extends React.Component {
 
         this.handle_createTodo = this.handle_createTodo.bind(this);
         this.handle_toggleTodo = this.handle_toggleTodo.bind(this);
-        this.handle_deleteTodo = this.handle_deleteTodo.bind(this);
+        this.handle_deleteTodo = this.handle_deleteTodo.bind(this);             // <---{!}
 
         this.state = {
             todoList: []
@@ -46,14 +46,20 @@ class App extends React.Component {
             return todoItem_next;
         });
 
-        this.setState( {todoList: todoList_next} );
+        this.setState({
+            todoList: todoList_next
+        });
     }
 
-    handle_deleteTodo(id) {
+    handle_deleteTodo(id) {                                                          // <--- [!]
         const todoList_prev = this.state.todoList;
-        const todoList_next = todoList_prev.filter( todoItem_prev=>(id !== todoItem_prev.id) );
+        const todoList_next = todoList_prev.filter(
+            todoItem_prev=>(id !== todoItem_prev.id)
+        );
 
-        this.setState( {todoList: todoList_next} );
+        this.setState({
+            todoList: todoList_next
+        });
     }
 
     render() {
@@ -63,7 +69,7 @@ class App extends React.Component {
                 <List
                     todoList={this.state.todoList}
                     toggleTodo={this.handle_toggleTodo}
-                    deleteTodo={this.handle_deleteTodo}
+                    deleteTodo={this.handle_deleteTodo}                                // <---[!]
                 />
             </div>
         );
