@@ -43,7 +43,9 @@ class App extends React.Component {
             return todoItem_next;
         });
 
-        this.setState( {todoList: todoList_next} );
+        this.setState({
+            todoList: todoList_next
+        });
     }
 
     render() {
@@ -53,7 +55,7 @@ class App extends React.Component {
                 <List
                     todoList={this.state.todoList}
                     toggleTodo={this.handle_toggleTodo}
-                    deleteTodo={(id)=>{console.log('deleteTodo, id:', id)}}
+                    deleteTodo={ (id)=>{console.log('deleteTodo, id:', id)} }    // <---[!]
                 />
             </div>
         );
