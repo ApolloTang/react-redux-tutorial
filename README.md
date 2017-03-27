@@ -1,7 +1,7 @@
 # react-tutorial
 
 Each folder is a lesson, you first have to create a node_modules directory
-above all lessons:
+above all lessons [1]:
 
 ```sh
 mkdir node_modules  
@@ -14,12 +14,16 @@ cd <lesson-dir>
 npm i
 ```
 
-To see the demo of lesson, spin up webpack dev server: 
+To play with a lesson, spin up webpack dev server: 
 
 ```sh
 npm start
 ```
 
 In browser open up localhost:9999
+
+------------
+foot note:
+[1] node_modules/ in each lesson is symbolically link to this directory (OSX and Linux).
 
 
