@@ -24,6 +24,6 @@ In browser open up localhost:9999
 
 ------------
 foot note:
-[1] node_modules/ in each lesson is symbolically link to this directory (OSX and Linux).
+[1] node_modules/ in each lesson is symbolically linked to this directory (OSX and Linux).
 
 
