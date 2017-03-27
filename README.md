@@ -1,17 +1,17 @@
 # react-tutorial
 
-Each folder is a lesson, you first have to create a node_modules dir
+Each folder is a lesson, you first have to create a node_modules directory
 above all lessons:
 
 ```sh
 mkdir node_modules  
 ```
-You only have create the node_modules dir once. After that 
-you can go to each lesson directory to run node install
+You only have create the node_modules/ directory once. After that 
+you can go to each lesson directory to run npm install
 
 ```sh
 cd <lesson-dir>
-node i
+npm i
 ```
 
 To see the demo of lesson, spin up webpack dev server: 
