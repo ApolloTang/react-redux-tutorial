@@ -6,7 +6,7 @@ Each folder is a lesson. If you are on OSX, create a node_modules/ directory at 
 mkdir node_modules
 ```
 
-You only have create the node_modules/ directory once. After that you can go to each lesson folder to run npm install
+You only have to create this node_modules/ directory once. After that you can go to each lesson folder to run npm install
 
 ```sh
 cd <lesson-dir>
