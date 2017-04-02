@@ -10,10 +10,10 @@ class MyComponent extends React.Component {
         return (
            <div>
                 {[
-                    <div key={1} >1</div>,
-                    <div key={2} >2</div>,
-                    <div key={3} >3</div>,
-                    React.createElement('div', {key:4}, '4')
+                    <div key={Math.random()} >1</div>,
+                    <div key={Math.random()} >2</div>,
+                    <div key={Math.random()} >3</div>,
+                    React.createElement('div', {key:Math.random()}, '4')
                 ]}
             </div>
         );
