@@ -15,7 +15,7 @@ const List = (props) => {
 
     return (
         <div>
-            { list.map( (item, index) => <Item key={index} item={item} />) }
+            { list.map( item => <Item key={item} item={item} />) }
         </div>
     );
 }
