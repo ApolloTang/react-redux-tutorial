@@ -47,7 +47,7 @@ class MyComponent extends React.Component {
                 <button onClick={this.handle_addItem} >Add Item</button>
                 {
                     this.state.list.map(
-                        (item, index) => <Item key={index} item={item} />
+                        item => <Item key={item} item={item} />
                     )
                 }
             </div>

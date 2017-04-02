@@ -10,10 +10,11 @@ class MyComponent extends React.Component {
         return (
             <div>
                 {
-                    ['1','2','3','4'].map( (item, index) => {
-                        console.log(`index: ${index}, item: ${item}`);
+                    ['1','2','3','4'].map( item => {
+                        const key = Math.random();
+                        console.log(`key: ${key}, item: ${item}`);
                         return(
-                            <div key={index} >{item}</div>
+                            <div key={key} >{item}</div>
                         );
                     })
                 }
