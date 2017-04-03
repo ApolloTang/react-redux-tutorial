@@ -35,10 +35,10 @@ const TodoList = (props) => {
     return (
         <div>
             {
-                todoList.map( (item, index) => {
+                todoList.map( item => {
                     return(
                         <TodoItem
-                            key={index}
+                            key={item.id}
                             todoItem={item}
                             toggleTodo={(id)=>props.toggleTodo(id)} /* <---[!] */
                             />
