@@ -28,7 +28,7 @@ const TodoList = (props) => {
 
     return (
         <div>
-            { todoList.map( (item, index) => <TodoItem key={index} todoItem={item} />) }
+            { todoList.map( item => <TodoItem key={item.id} todoItem={item} />) }
         </div>
     );
 }

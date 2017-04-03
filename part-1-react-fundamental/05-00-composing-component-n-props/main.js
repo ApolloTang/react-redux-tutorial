@@ -30,7 +30,7 @@ class MyComponent extends React.Component {
             <div>
                 {
                     this.props.list.map(
-                        (item, index) => <Item key={index} item={item} />
+                        item => <Item key={Math.random()} item={item} />
                     )
                 }
             </div>
