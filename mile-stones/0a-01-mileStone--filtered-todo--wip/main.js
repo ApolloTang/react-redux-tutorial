@@ -21,7 +21,7 @@ const TodoItem = function(props) {
     );
 };
 
-const TodoCollection = function(props) {
+const TodoList = function(props) {
     return (
         <div>
             {
@@ -41,13 +41,31 @@ const TodoCollection = function(props) {
 };
 
 const FilteredTodoList = function(props) {
-    const todos_filtered = props.todos;
+    const filterBy = 'IS_NOT_DONE';
+    const todos_filtered = props.todos.filter( todo=>{
+        let isShown = false;
+        switch (true) {
+            case (filterBy === 'ALL'):
+                isShown = true;
+                break;
+            case (filterBy === 'IS_DONE'):
+                isShown = (todo.isDone === true);
+                break;
+            case (filterBy === 'IS_NOT_DONE'):
+                isShown = (todo.isDone === false);
+                break;
+            default:
+                isShown = false;
+                break;
+        }
+        return isShown;
+    });
 
     return (
-        <TodoCollection
+        <TodoList
             todos={todos_filtered}
-            deleteTodo={props.handle_deleteTodo}
-            toggleTodo={this.handle_toggleTodo}
+            deleteTodo={props.deleteTodo}
+            toggleTodo={props.toggleTodo}
         />
     );
 };
@@ -141,7 +159,7 @@ class TodoApp extends React.Component {
         return (
             <div>
                 <TodoAdder addTodo={this.handle_addTodo}/>
-                <TodoCollection
+                <FilteredTodoList
                     todos={this.state.todos}
                     deleteTodo={this.handle_deleteTodo}
                     toggleTodo={this.handle_toggleTodo}
