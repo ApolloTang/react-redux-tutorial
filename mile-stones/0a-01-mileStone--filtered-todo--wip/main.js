@@ -95,6 +95,7 @@ class TodoAdder extends React.Component {
     render() {
         return(
             <input type="text"
+                style={{outline: 'none'}}
                 onChange={this.handle_inputChange}
                 onKeyUp={this.handle_keyUp}
                 value={this.state.inputText}
@@ -103,25 +104,47 @@ class TodoAdder extends React.Component {
     }
 }
 
-class TodoListFilter extends React.Component {
+
+const FilterButton = (props) => {
+    const isActive = props.currentFilter === props.filterType;
+    let style = (isActive) ? {background: 'red'} : {background: 'white'};
+    style = {...style, outline:'none' };
+
+    return (
+        <button
+            style={style}
+            className = {isActive ? 'is-active' : ''}
+            onClick={ ()=>{props.selectFilter(props.filterType)} }
+            >{props.children}
+        </button>);
+};
+FilterButton.propTypes = {
+    selectFilter: React.PropTypes.func,
+    filterType: React.PropTypes.string
+};
+
+
+class TodoListFilterControl extends React.Component {
     constructor(props) {
         super(props);
-        this.handle_filterSelection=this.handle_filterSelection.bind(this);
+        this.handle_selectFilter=this.handle_selectFilter.bind(this);
     }
-    handle_filterSelection(filter) {
-        this.props.filterSelection(filter);
+    handle_selectFilter(filterType) {
+        this.props.filterSelection(filterType);
     }
     render() {
+        const currentFilter = this.props.todoListFilter;
         return(
             <div>
-                <button onClick={()=>this.handle_filterSelection('ALL')} >All</button>
-                <button onClick={()=>this.handle_filterSelection('IS_DONE')}>Done</button>
-                <button onClick={()=>this.handle_filterSelection('IS_NOT_DONE')}>Not Done</button>
+                {/* <button onClick={()=>this.handle_filterSelection('ALL')} >All</button> */}
+                <FilterButton currentFilter={currentFilter} selectFilter={this.handle_selectFilter} filterType="ALL" >All</FilterButton>
+                <FilterButton currentFilter={currentFilter} selectFilter={this.handle_selectFilter} filterType="IS_DONE" >Done</FilterButton>
+                <FilterButton currentFilter={currentFilter} selectFilter={this.handle_selectFilter} filterType="IS_NOT_DONE" >Not Done</FilterButton>
             </div>
         );
     }
 }
-TodoListFilter.propTypes = {
+TodoListFilterControl.propTypes = {
     filterSelection: React.PropTypes.func
 }
 
@@ -189,7 +212,8 @@ class TodoApp extends React.Component {
         return (
             <div>
                 <TodoAdder addTodo={this.handle_addTodo}/>
-                <TodoListFilter
+                <TodoListFilterControl
+                    todoListFilter={this.state.todoListFilter}
                     filterSelection={this.handle_filterSelection}
                 />
                 <FilteredTodoList
