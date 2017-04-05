@@ -13,7 +13,7 @@ cd <lesson-dir>
 npm i
 ```
 
-To play with a lesson, spin up webpack dev server:
+To play with a lesson, spin up webpack dev server<sup>3</sup>:
 
 ```sh
 npm start
@@ -40,14 +40,17 @@ rm ./node_modules
 cp ../../.babelrc .
 npm i
 ```
-Also, it is very like that port 9999 is already taken on Windows, if that is the case you will get error when you do 'npm start'. If that is the case you can configure webpack to use a different port in file webpack.config.js:
-```javascript
-deSever: {
-   port: 9999   // <--- change this to something else 
-}
-```
 
 [2]: node_modules/ in each lesson is symbolically linked to this directory so that you don't have duplicated node package in each lesson.
+
+[3]: Also, it is very like that port 9999 is already taken on Windows, if that is the case you will get error when you do 'npm start'. If this is the case you can configure webpack to use a different port in file webpack.config.js:
+```javascript
+devSever: {
+   . . .
+   port: 9999   // <--- change this to something else
+   . . . 
+}
+```
  
 
 
