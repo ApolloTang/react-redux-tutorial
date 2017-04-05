@@ -25,10 +25,10 @@ const TodoCollection = function(props) {
     return (
         <div>
             {
-                props.todos.map( (todo, index) => {
+                props.todos.map( todo => {
                     return(
                         <TodoItem
-                            key={index}
+                            key={todo.id}
                             todo={todo}
                             deleteTodo={props.deleteTodo}
                             toggleTodo={props.toggleTodo}

@@ -21,14 +21,14 @@ const TodoItem = function(props) {
     );
 };
 
-const TodoCollection = function(props) {
+const TodoList = function(props) {
     return (
         <div>
             {
-                props.todos.map( (todo, index) => {
+                props.todos.map( todo => {
                     return(
                         <TodoItem
-                            key={index}
+                            key={todo.id}
                             todo={todo}
                             deleteTodo={props.deleteTodo}
                             toggleTodo={props.toggleTodo}
@@ -41,13 +41,31 @@ const TodoCollection = function(props) {
 };
 
 const FilteredTodoList = function(props) {
-    const todos_filtered = props.todos;
+    const filterBy = props.todoListFilter;
+    const todos_filtered = props.todos.filter( todo=>{
+        let isShown = false;
+        switch (true) {
+            case (filterBy === 'ALL'):
+                isShown = true;
+                break;
+            case (filterBy === 'IS_DONE'):
+                isShown = (todo.isDone === true);
+                break;
+            case (filterBy === 'IS_NOT_DONE'):
+                isShown = (todo.isDone === false);
+                break;
+            default:
+                isShown = false;
+                break;
+        }
+        return isShown;
+    });
 
     return (
-        <TodoCollection
+        <TodoList
             todos={todos_filtered}
-            deleteTodo={props.handle_deleteTodo}
-            toggleTodo={this.handle_toggleTodo}
+            deleteTodo={props.deleteTodo}
+            toggleTodo={props.toggleTodo}
         />
     );
 };
@@ -77,13 +95,59 @@ class TodoAdder extends React.Component {
     render() {
         return(
             <input type="text"
+                style={{outline: 'none'}}
                 onChange={this.handle_inputChange}
                 onKeyUp={this.handle_keyUp}
                 value={this.state.inputText}
             />
-        )
+        );
     }
 }
+
+
+const FilterButton = (props) => {
+    const isActive = props.currentFilter === props.filterType;
+    let style = (isActive) ? {background: 'red'} : {background: 'white'};
+    style = {...style, outline:'none' };
+
+    return (
+        <button
+            style={style}
+            className = {isActive ? 'is-active' : ''}
+            onClick={ ()=>{props.selectFilter(props.filterType)} }
+            >{props.children}
+        </button>);
+};
+FilterButton.propTypes = {
+    selectFilter: React.PropTypes.func,
+    filterType: React.PropTypes.string
+};
+
+
+class TodoListFilterControl extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handle_selectFilter=this.handle_selectFilter.bind(this);
+    }
+    handle_selectFilter(filterType) {
+        this.props.filterSelection(filterType);
+    }
+    render() {
+        const currentFilter = this.props.todoListFilter;
+        return(
+            <div>
+                {/* <button onClick={()=>this.handle_filterSelection('ALL')} >All</button> */}
+                <FilterButton currentFilter={currentFilter} selectFilter={this.handle_selectFilter} filterType="ALL" >All</FilterButton>
+                <FilterButton currentFilter={currentFilter} selectFilter={this.handle_selectFilter} filterType="IS_DONE" >Done</FilterButton>
+                <FilterButton currentFilter={currentFilter} selectFilter={this.handle_selectFilter} filterType="IS_NOT_DONE" >Not Done</FilterButton>
+            </div>
+        );
+    }
+}
+TodoListFilterControl.propTypes = {
+    filterSelection: React.PropTypes.func
+}
+
 
 class TodoApp extends React.Component {
     constructor(props) {
@@ -91,9 +155,11 @@ class TodoApp extends React.Component {
         this.handle_addTodo = this.handle_addTodo.bind(this);
         this.handle_deleteTodo = this.handle_deleteTodo.bind(this);
         this.handle_toggleTodo = this.handle_toggleTodo.bind(this);
+        this.handle_filterSelection = this.handle_filterSelection.bind(this);
 
         this.state = {
-            todos:[]
+            todos:[],
+            todoListFilter: 'ALL'
         };
     }
     handle_addTodo(_text) {
@@ -137,12 +203,22 @@ class TodoApp extends React.Component {
             todos: _todos_next
         });
     }
+    handle_filterSelection(filter) {
+        this.setState({
+            todoListFilter: filter
+        });
+    }
     render() {
         return (
             <div>
                 <TodoAdder addTodo={this.handle_addTodo}/>
-                <TodoCollection
+                <TodoListFilterControl
+                    todoListFilter={this.state.todoListFilter}
+                    filterSelection={this.handle_filterSelection}
+                />
+                <FilteredTodoList
                     todos={this.state.todos}
+                    todoListFilter={this.state.todoListFilter}
                     deleteTodo={this.handle_deleteTodo}
                     toggleTodo={this.handle_toggleTodo}
                 />
