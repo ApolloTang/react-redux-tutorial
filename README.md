@@ -19,11 +19,21 @@ To play with a lesson, spin up webpack dev server:
 npm start
 ```
 
-In browser open up localhost:9999
+As an example : 
+
+```sh
+cd ./part-1-react-fundamental/01-00-component
+npm i
+npm start
+```
+
+Then, in your browser open up localhost:9999 (make sure your port 9999 is free)
+
+If you are on window, before you do 'npm i' you have to delete node_modules from the lesson directory and copy .babelrc to the lesson directry.
 
 
 ------------
-
+ 
 [1]: node_modules/ in each lesson is symbolically linked to this directory so that you don't have duplicated node package in each lesson.
 
 
