@@ -29,7 +29,7 @@ npm start
 
 Then, in your browser open up localhost:9999 (make sure your port 9999 is free)
 
-If you are on window, before you do 'npm i' you have to delete node_modules from the lesson directory and copy .babelrc to the lesson directry.
+If you are on window, before you do 'npm i' you have to delete node_modules from the lesson directory and copy .babelrc to the lesson directory.
 
 
 ------------
