@@ -35,13 +35,13 @@ class MyComponent extends React.Component {
 
     handle_addItem() {
         const list_prev = this.state.list;
-        const list_next = list_prev;
+        const list_next = [].concat(list_prev);                // [3]
 
-        const item_next = Date.now()+'';
+        const item_new = Date.now()+'';
 
-        list_next.push(item_next);
+        list_next.push(item_new);
 
-        this.setState({                                        // [3]
+        this.setState({                                        // [4]
             list: list_next
         });
     }
@@ -76,6 +76,8 @@ reactDOM.render(<MyComponent />, reactContainer);;
         • You can only change 'this.state' via 'this.setState()'.
         • Calling 'this.setState()' will trigger render().
 
-    [3] Calling 'this.setState()' to trigger reder().
+    [3] clone array.
+
+    [4] Calling 'this.setState()' to trigger reder().
 
 */}

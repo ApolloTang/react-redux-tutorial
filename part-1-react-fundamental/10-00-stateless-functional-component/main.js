@@ -2,7 +2,7 @@ import React from 'react';
 import reactDOM from 'react-dom';
 
 
-// Stateless functional component are pure function
+// Stateless functional component are pure function, it has no internal state.
 const Item = (props) => <div>{props.item}</div>;
 
 const List = (props) => {
@@ -27,11 +27,11 @@ class MyComponent extends React.Component {
 
     handle_addItem() {
         const list_prev = this.state.list;
-        const list_next = list_prev;
+        const list_next = [].concat(list_prev);
 
-        const item_next = Date.now()+'';
+        const item_new = Date.now()+'';
 
-        list_next.push(item_next);
+        list_next.push(item_new);
 
         this.setState({
             list: list_next

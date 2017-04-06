@@ -12,11 +12,11 @@ class App extends React.Component {
 
     handle_addItem() {
         const list_prev = this.state.list;
-        const list_next = list_prev;
+        const list_next = [].concat(list_prev);
 
-        const item_next = Date.now()+'';
+        const item_new = Date.now()+'';
 
-        list_next.push(item_next);
+        list_next.push(item_new);
 
         this.setState({
             list: list_next
