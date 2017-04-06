@@ -35,7 +35,8 @@ class MyComponent extends React.Component {
         const list_prev = this.state.list;
         const list_next = [].concat(list_prev);
 
-        const item_new = Date.now()//+'';
+        const item_new = Date.now();
+        // const item_new = Date.now()+'';
 
         list_next.push(item_new);
 
