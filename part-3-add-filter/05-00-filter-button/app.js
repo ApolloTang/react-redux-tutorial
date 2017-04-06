@@ -3,7 +3,7 @@ import React from 'react';
 import List from './list';
 import CreateTodo from './create-todo';
 import TodoListFilterControl from './todo-list-filter-ctrl';
-import FilteredTodoList from './filtered-todo-list';                                     // <----- [!]
+import FilteredTodoList from './filtered-todo-list';
 
 
 class App extends React.Component {
@@ -79,9 +79,9 @@ class App extends React.Component {
             <div>
                 <CreateTodo createTodo={this.handle_createTodo} />
                 <TodoListFilterControl selectFilter={this.handle_selectFilter} />
-                <FilteredTodoList                                                    /* <------ [!] */
+                <FilteredTodoList
                     todoList={this.state.todoList}
-                    todoListFilter={this.state.todoListFilter}                       /* <------ [!] */
+                    todoListFilter={this.state.todoListFilter}
                     toggleTodo={this.handle_toggleTodo}
                     deleteTodo={this.handle_deleteTodo}
                 />
