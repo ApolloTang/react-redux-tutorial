@@ -4,7 +4,7 @@ import reactDOM from 'react-dom';
 
 class MyComponent extends React.Component {
 
-    // JXS is transpile into JS behine the scene
+    // JXS is transpile into JS behind the scene
 
     render() {
         return React.createElement(

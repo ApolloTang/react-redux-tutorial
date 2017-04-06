@@ -24,7 +24,12 @@ class MyComponent extends React.Component {
         this.handle_addItem = this.handle_addItem.bind(this);  // [1]
 
         this.state = {                                         // [2]
-            list: []
+            list: [
+                1234567890,
+                1234567891,
+                1234567892,
+                1234567893
+            ]
         };
     }
 

@@ -1,6 +1,4 @@
 import React from 'react';
-import reactDOM from 'react-dom';
-
 
 const Item = (props) => <div>{props.item}</div>;
 Item.propTypes = {

@@ -1,5 +1,4 @@
 import React from 'react';
-import reactDOM from 'react-dom';
 import List from './list';
 
 class App extends React.Component {
