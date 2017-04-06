@@ -48,7 +48,7 @@ rm ./node_modules
 cp ../../.babelrc .
 npm i
 ```
-This is because node_modules/ is a Linux symbolic link which does not reconized by Windows, as the result npm will be confused. By removing this file, npm can install node packages normally; the trade off is that you have to install the packages in each lesson, which can be annoying. 
+This is because node_modules/ is a Linux symbolic link which is not reconized by Windows, as the result npm will be confused. By removing this file, npm can install node packages normally; the trade off is that you have to install the packages in each lesson, which can be annoying. 
 
 The second step that you have to copy .babelrc to each lesson folder because for some reason Windows does not search up to parent directory to look for babel configuration.
 
