@@ -26,7 +26,6 @@ class TodoListFilterControl extends React.Component {
 }
 TodoListFilterControl.propTypes = {
     selectFilter: React.PropTypes.func,
-    currentFilter: React.PropTypes.string
 }
 
 export default TodoListFilterControl;
