@@ -81,6 +81,7 @@ class App extends React.Component {
                 <TodoListFilterControl selectFilter={this.handle_selectFilter} />
                 <FilteredTodoList                                                    /* <------ [!] */
                     todoList={this.state.todoList}
+                    todoListFilter={this.state.todoListFilter}                       /* <------ [!] */
                     toggleTodo={this.handle_toggleTodo}
                     deleteTodo={this.handle_deleteTodo}
                 />
