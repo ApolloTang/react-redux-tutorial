@@ -3,7 +3,7 @@ const pathResolve = require('path').resolve;
 module.exports = {
     devServer: {
         host: '0.0.0.0',
-        port: 9999,
+        port: 8888,
         contentBase: pathResolve('./')
     },
     entry: './main.js',
