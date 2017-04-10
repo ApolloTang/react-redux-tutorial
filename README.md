@@ -17,13 +17,13 @@ You only have to do npm install once because node_modules/ in each lesson is sym
 
 The above installation instruction won't work for Windows, please read footnote [1] for work around.
 
-To play with a lesson, spin up webpack dev server (Windows user, please read footnote [2]):
+To play with a lesson, spin up webpack dev server:
 
 ```sh
 npm start
 ```
 
-Then, in your browser open up localhost:9999
+Then, in your browser open up localhost:8888
 
 Here is the full instruction set for OSX:
 
@@ -52,11 +52,3 @@ This is because node_modules/ is a Linux symbolic link which is not reconized by
 
 The second step that you have to copy .babelrc to each lesson folder because for some reason Windows does not search up to parent directory to look for babel configuration.
 
-[2]: I originally wrote this tutorial on OSX, but later discovered that port 9999 is already taken on Windows by default, as the result 'npm start' will terminate with errors. To work around this you have to configure webpack to use a different port by editing the file webpack.config.js in each lesson:
-```javascript
-devSever: {
-   . . .
-   port: 9999   // <--- change this to something else
-   . . . 
-}
-```
