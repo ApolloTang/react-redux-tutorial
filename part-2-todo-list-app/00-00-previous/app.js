@@ -1,9 +1,10 @@
 import React from 'react';
 import List from './list';
 
+
 class App extends React.Component {
     constructor(props) {
-        super();
+        super(props);
         this.handle_addItem = this.handle_addItem.bind(this);
         this.state = {
             list: []

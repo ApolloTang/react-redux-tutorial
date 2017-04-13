@@ -1,5 +1,8 @@
 import React from 'react';
 
+
+
+
 const Item = (props) => <div>{props.item}</div>;
 Item.propTypes = {
     item: React.PropTypes.string
@@ -7,9 +10,7 @@ Item.propTypes = {
 
 
 const List = (props) => {
-    const list
-        = (Object.prototype.toString.call(props.list) === '[object Array]' )
-        ? props.list : [];
+    const list = (Object.prototype.toString.call(props.list) === '[object Array]' ) ? props.list : [];
 
     return (
         <div>
