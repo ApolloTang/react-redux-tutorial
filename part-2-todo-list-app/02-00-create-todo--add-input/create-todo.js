@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class CreateTodo extends React.Component {
     constructor(props) {
         super(props);
