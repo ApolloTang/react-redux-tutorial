@@ -13,7 +13,7 @@
   },
   "keywords": ["react", "redux", "tutorial"],
   "author": "Apollo Tang <tang.apollo@gmail.com>",
-  "license": "BSD 3-Clause License",
+  "license": "BSD-3-Clause",
   "devDependencies": {
     "babel-core": "6.23.1",
     "babel-loader": "6.3.2",
