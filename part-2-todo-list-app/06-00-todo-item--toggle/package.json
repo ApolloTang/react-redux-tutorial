@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "A step by step tutorial for react/redux",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ApolloTang/react-redux-tutorial"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server"
   },
   "keywords": ["react", "redux", "tutorial"],
-  "author": "Apollo Tang",
+  "author": "Apollo Tang <tang.apollo@gmail.com>",
   "license": "BSD 3-Clause License",
   "devDependencies": {
     "babel-core": "6.23.1",
