@@ -41,16 +41,17 @@ export default CreateTodo;
 
 {/* ---------------------------------------------
 
-[1] local-cache initialized
+    [1] local-cache initialized
 
-[2] In handle_inputChange(), form value is saved
-    to local-cache
+    [2] In handle_inputChange(), form value is saved
+        to local-cache
 
-[3] In handle_keyup() if it is RETURN key pressed then:
-        1. Call createTodo() form value to the store
-        2. Empty the cache
+    [3] In handle_keyup() if it is RETURN key press, then:
+            1. Called createTodo() to pass componet state to parent
+               via callback
+            2. Empty the cache
 
-[4] Cache is cleared but form is NOT cleared ( we will solve
-    this problem in next lesson )
+    [4] Cache is cleared but form is NOT cleared ( we will solve
+        this problem in next lesson )
 
 */}

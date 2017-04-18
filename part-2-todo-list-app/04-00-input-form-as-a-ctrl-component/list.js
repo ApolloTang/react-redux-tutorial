@@ -1,9 +1,8 @@
 import React from 'react';
-import reactDOM from 'react-dom';
 import _ from 'lodash';
 
 
-const TodoItem = (props) => <div>{JSON.stringify(props.todoItem)}</div>;
+const TodoItem = (props) => <div><code>{JSON.stringify(props.todoItem)}</code></div>;
 TodoItem.propTypes = {
     todoItem: React.PropTypes.object
 }
