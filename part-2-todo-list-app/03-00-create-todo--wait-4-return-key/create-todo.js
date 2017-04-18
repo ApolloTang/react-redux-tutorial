@@ -5,18 +5,22 @@ class CreateTodo extends React.Component {
         super(props);
         this.handle_inputChange = this.handle_inputChange.bind(this);
         this.handle_keyUp = this.handle_keyUp.bind(this);
-        this._inputText = '';                   // <--- [1]
+        this._cache = {inputText : ''};         // <--- [1]
     }
     handle_inputChange(e) {                     // <--- [2]
         const inputText = e.target.value;
-        this._inputText = inputText;
+        this._cache.inputText = inputText;
+
+        console.log('local-cached: ', this._cache.inputText, ' <--- input changed');
     }
     handle_keyUp(e) {                           // <--- [3]
         const RETURN = 13;
         const keyCode = e.keyCode;
         if (keyCode === RETURN) {
-            this.props.createTodo(this._inputText);
-            this._inputText = '';               // <--- [4]
+            this.props.createTodo(this._cache.inputText);
+            this._cache.inputText = '';         // <--- [4]
+
+            console.log('local-cached: ', this._cache.inputText, '<--- cleared');
         }
     }
     render() {
@@ -35,22 +39,18 @@ CreateTodo.propTypes = {
 
 export default CreateTodo;
 
-
 {/* ---------------------------------------------
 
-[1] local cache initialized
+[1] local-cache initialized
 
-[2] handle_inputChange()
+[2] In handle_inputChange(), form value is saved
+    to local-cache
 
-    save form value to a cache
-
-[3] handle_keyup()
-
-    Wait for RETURN key press
-        1. Call createTodo() which save to the store
+[3] In handle_keyup() if it is RETURN key pressed then:
+        1. Call createTodo() form value to the store
         2. Empty the cache
 
-[4] Cache is clear but form is NOT cleared
-
+[4] Cache is cleared but form is NOT cleared ( we will solve
+    this problem in next lesson )
 
 */}
